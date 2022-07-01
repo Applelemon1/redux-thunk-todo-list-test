@@ -21,6 +21,10 @@ export const receive_error = () => {
 export const thunk_action_creator = () => {
     store.dispatch(fetch_post());
     return function(dispatch, getState) {
+        // dispatch
+        // async
+        // return
+        // isFetch
     }
 }
 export const thunk_action_creator2 = () => {

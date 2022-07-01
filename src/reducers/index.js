@@ -20,7 +20,7 @@ const asyncReducer = (state , action) => {
           
           
         default:
-            return {data:'CREATE'};
+            return {data:'CREATED'};
     }
 }
 

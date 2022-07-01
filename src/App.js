@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   thunk_action_creator,
@@ -9,6 +9,8 @@ import {
 
 function App(props) {
   const [arr, setArr] = useState([]);
+  const [toggle, setToggle] = useState(false);
+  const [fisrtTime, setfisrtTime] = useState(0);
   const listItems2 = arr.map((action, index) => <p key={index}>{action} </p>);
   console.log(arr);
 
@@ -54,7 +56,7 @@ function App(props) {
         } else {
           setArr([...arr, props.data.data]);
         }
-      //////////////////////////////////
+        //////////////////////////////////
       } else {
         props.dispatch(thunk_action_creator());
         if (props.data === undefined) {
@@ -64,11 +66,11 @@ function App(props) {
         }
         setInput("");
       }
-      
 
       setInput("");
       setNowIndex(null);
       setlistHistory([...listHistory, input]);
+      setToggle(!toggle);
     }
   }
 
@@ -80,11 +82,15 @@ function App(props) {
         props.dispatch(thunk_action_creator3());
         if (props.data === undefined) {
           console.log("nah");
-        } else setArr([...arr, props.data.data]);
+        } else {
+          // arr.pop();
+          setArr([...arr, props.data.data]);
+        }
       }
       setInput("");
       setNowIndex(null);
       setlistHistory([...listHistory, delettthis]);
+      setToggle(!toggle);
     }
   }
 
@@ -95,6 +101,17 @@ function App(props) {
   const focusHandler = () => {
     if (input) document.getElementById("id1").style.visibility = "visible";
   };
+
+  useEffect(() => {
+    if (fisrtTime == 0) {
+      setArr([]);
+      setfisrtTime(1);
+    } else {
+      console.log("in useEffect now propdata is", props.data.data);
+      arr.pop();
+      setArr([...arr, props.data.data]);
+    }
+  }, [toggle]);
 
   return (
     <div className="App">
