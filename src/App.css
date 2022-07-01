@@ -1,0 +1,89 @@
+body{
+  margin: 2rem 2rem;
+}
+
+.App{
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.activity-box , .todo-box ,.input-box{
+  margin: 0 2rem;
+}
+
+.activity-box h1 , .todo-box h1 ,.input-box h1{
+  text-align: center;
+}
+
+.activity-box-content , .todo-box-content{
+  color:white;
+  padding: 1rem 2rem;
+  background-color: rgb(70, 74, 134);
+  height: 500px;
+  width: 300px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  
+
+}
+
+.activity-box-content {
+  display: flex
+}
+.activity-box-content-box2 {
+  margin: 0 2rem;
+}
+.activity-box-content::-webkit-scrollbar , .todo-box-content::-webkit-scrollbar {
+  display: none;
+}
+
+
+input {
+  width: 80%;
+  height: 30px;
+  border-radius: 10px;
+}
+input:focus {
+  border: 3px solid rgb(146, 63, 194);
+}
+.input-box-content{
+  padding: 1rem 2rem;
+  height: 500px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  
+}
+
+.add-button{
+  background-color: rgb(90, 196, 90);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  
+}
+
+.delete-button{
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  border: none;
+}
+.delete-button:hover{
+  background-color:red;
+  color: white;
+}
+
+
+.pleaseClickMe{
+  cursor: pointer;
+}
+
+.typing{
+  text-align: start;
+  margin: 0 2rem;
+  /* color: yellow; */
+}
