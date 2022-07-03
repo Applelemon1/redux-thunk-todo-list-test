@@ -6,13 +6,13 @@ import {
   thunk_action_creator2,
   thunk_action_creator3,
 } from "./actions/fetchAction";
+import axios from "axios";
 
 function App(props) {
   const [arr, setArr] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [fisrtTime, setfisrtTime] = useState(0);
   const listItems2 = arr.map((action, index) => <p key={index}>{action} </p>);
-  console.log(arr);
 
   const [list, setlist] = useState([]);
   const [listHistory, setlistHistory] = useState([]);
@@ -47,7 +47,6 @@ function App(props) {
         setlist([...list, input]);
         setInput("");
       }
-      const keeppropsstring = props.data.data;
       /////// if select the value to Edit
       if (nowIndex != null) {
         props.dispatch(thunk_action_creator2());
@@ -83,7 +82,6 @@ function App(props) {
         if (props.data === undefined) {
           console.log("nah");
         } else {
-          // arr.pop();
           setArr([...arr, props.data.data]);
         }
       }
@@ -106,8 +104,25 @@ function App(props) {
     if (fisrtTime == 0) {
       setArr([]);
       setfisrtTime(1);
+      const loadPost = async () => {
+        // const response = await axios.get(
+        //   "https://jsonplaceholder.typicode.com/todos/1"
+        // );
+        // const response2 = await axios.get(
+        //   "https://jsonplaceholder.typicode.com/todos/2"
+        // );
+        const response3 = await axios.get(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        // const keepval = response.data.title;
+        // const keepva2 = response2.data.title;
+        const keepva3 = response3.data[0].name;
+        const keepva4 = response3.data[1].name;
+        setlist([keepva3,keepva4]);
+      };
+
+      loadPost();
     } else {
-      console.log("in useEffect now propdata is", props.data.data);
       arr.pop();
       setArr([...arr, props.data.data]);
     }
